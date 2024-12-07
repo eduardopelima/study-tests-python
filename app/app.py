@@ -29,3 +29,4 @@ class Incremental:
 
         if df_count > 1:
             print("erro")
+            raise ValueError

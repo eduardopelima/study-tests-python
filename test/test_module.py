@@ -5,7 +5,7 @@ from app.app import Incremental
 
 class TestSparkDataFrame(unittest.TestCase):
     @patch("pyspark.sql.session.SparkSession")
-    def test_dataframe_count(self, mock_spark_session):
+    def test_dataframe_count_correct(self, mock_spark_session):
 
         mock_spark_session._instantiatedSession.createDataFrame. \
         return_value.select. \
@@ -19,3 +19,14 @@ class TestSparkDataFrame(unittest.TestCase):
         except:
             self.fail()
         
+    @patch("pyspark.sql.session.SparkSession")
+    def test_dataframe_count_incorrect(self, mock_spark_session):
+
+        mock_spark_session._instantiatedSession.createDataFrame. \
+        return_value.select. \
+        return_value.distinct. \
+        return_value.count.return_value = 2
+
+        incremental_service = Incremental()
+
+        self.assertRaises(ValueError, incremental_service.execute_service)
