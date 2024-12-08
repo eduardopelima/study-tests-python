@@ -8,7 +8,7 @@ class Employee:
     name: str
     employee_id: int
     pay_rate: float = 100.00
-    hours_worked: int
+    hours_worked: float = 0.0
     employeer_cost: float = 1000.0
     has_comission: bool = True
     comission: float = 100.0
@@ -17,5 +17,11 @@ class Employee:
     def compute_payout(self) -> float:
         """Compute how much the employee should be paid."""
 
-        raise NotImplementedError
+        payout = self.pay_rate * self.hours_worked + self.employeer_cost
+
+        if self.has_comission:
+            payout += self.contracts_landed * self.comission
+
+        return payout
+
 

@@ -1,6 +1,5 @@
-from models.employee import Employee
 import unittest
-
+from models.employee import Employee
 
 NAME: str = "Gutierre"
 EMPLOYEE_ID: int = "1"
@@ -23,7 +22,7 @@ class TestEmployeeComputePayout(unittest.TestCase):
     def test_employee_payout_no_comission(self):
         """Wheter payout is correctly computed in case of no comission and 10 hours worked."""
         self.gutierre.hours_worked = 10
-        self.assertAlmostEqual(self.gutierre.compute_payout(), 1000.0)
+        self.assertAlmostEqual(self.gutierre.compute_payout(), 2000.0)
     
     def test_employee_payout_with_comission(self):
         """Wheter payout is corretly computed in case of 10 contracts landed and 10 hours worked."""
