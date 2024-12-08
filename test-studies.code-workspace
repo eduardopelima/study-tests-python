@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "arjancodes_tdd"
+		},
+		{
+			"path": "laranja_magicmock_spark"
+		}
+	],
+	"settings": {}
+}
